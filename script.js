@@ -1,6 +1,6 @@
-
-
-
+let operation = [];
+let currentOperation = [];
+let typedValye = [];
 
 
 // Calculation functions
@@ -22,6 +22,24 @@ const multiply = function(a, b) {
 const divide = function(a, b) {
 	result = a / b;
   return result;
+};
+
+
+const operate = function(a,b, operator) {
+
+    if (operator == "+") {
+        add(a,b);
+        return add;
+    } else if (operator == "-") {
+        subtract(a,b);
+        return subtract;
+    } else if (operator == "*") {
+        multiply(a,b);
+        return multiply;
+    } else if (operator == "/") {
+        divide(a,b);
+        return divide;
+    };
 };
 
 
