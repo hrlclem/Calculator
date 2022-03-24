@@ -1,0 +1,30 @@
+.header{
+    margin-top: 0;
+    text-align:center;
+    font-family: georgia;
+    padding: 10px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    font-size: 4vw;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+
+
+.screen, 
+.button{
+    border: 1px solid black;
+}
+
+
+
+.footer {
+    font-family: arial;
+    color: #212121;
+    font-size: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 10px;
+    text-align: center;
+  }
