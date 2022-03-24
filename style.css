@@ -8,6 +8,12 @@
     margin-bottom: 15px;
 }
 
+
+
+
+
+
+
 body {
     text-align:center;
     border: 0;
@@ -16,14 +22,26 @@ body {
 }
   
 #calculator{
+    display:grid;
+    grid-template-columns: 26.6% 26.6% 26.6% 20%;
     max-width:400px;
     margin:0 auto;
+    border: 0.5px solid black;
+    padding: 5px;
 }
 
 .screen, 
 .button{
-    border: 1px solid black;
+    border: 0.5px solid black;
+    background-color:#fffefe;
+    border-color: #686767;
+    padding:2px;
 }
+
+
+
+
+
 
 
 
