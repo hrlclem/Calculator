@@ -24,7 +24,7 @@ body {
 #calculator{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 0.7fr;
-    grid-template-rows: 1fr 1fr 1fr 0.7fr;
+    grid-template-rows: 1fr;
     width:50%;
     max-width:400px;
     margin:0 auto;
@@ -43,7 +43,39 @@ body {
     border-radius: 4px;
 }
 
+.screen{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color:black;
+    color:white;
+}
 
+.resultScreen{
+    border-radius: 0;
+    margin-top:0;
+    border-top:0;
+}
+
+.currentOpeScreen{
+    border-radius: 0;
+    margin-bottom:0;
+    border-bottom:0;
+}
+
+.AC{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.DEL{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.equal{
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
 
 
 
