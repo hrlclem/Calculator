@@ -7,9 +7,6 @@ let currentOperation = "";
 
 
 
-
-
-
 // PSEUDOCODE
 
 // OR just set currentInputA then if number is clicked, currentInputA += clicked button value.
