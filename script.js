@@ -9,6 +9,7 @@ let currentOperation = "";
 
 
 
+
 // PSEUDOCODE
 
 // OR just set currentInputA then if number is clicked, currentInputA += clicked button value.
@@ -22,7 +23,7 @@ let currentOperation = "";
 //    When opeBtn is clicked (- + * /), change array to type integer value '237' as -savedInputA, change -currentInputA = [] 
 //    and sets -characterInput to "+", "-", ...
 //
-//    If = is clicked, nothing happens
+//    If = is clicked, nothing happens [if (currentDigit === "" || prevOperator === "" || prevDigit === "") return;]
 //
 //
 //
