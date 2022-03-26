@@ -7,8 +7,14 @@ let currentOperation = "";
 
 const body = document.body;
 const calculator = document.getElementById('calculator');
-const buttons = document.getElementById('numberBtn');
+const buttons = document.querySelectorAll('.numberBtn');
+const screen = document.getElementById('screen');
 
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+  alert(button.value);
+  });  
+});
 // PSEUDOCODE
 
 // OR just set currentInputA then if number is clicked, currentInputA += clicked button value.
@@ -39,22 +45,22 @@ const buttons = document.getElementById('numberBtn');
 //    Make the whole operation as a string and set to currentOperation (to be able to save the whole operation string)
 
 
-operation();
+//peration();
 
-function operation() {
-      console.log(2);
-  // if(firstNumber == undefined) {
-      buttons.forEach((buttonNbr) => {
-        buttonNbr.addEventListener('click', () => {
-          alert(button.id);
-        });
-        
-      });
-    }
-        //   document.getElementById('numberBtn').getAttribute('value');
-        // }
-
-
+// function operation() {
+//       console.log(2);
+//   // if(firstNumber == undefined) {
+//       buttons.forEach((buttonNbr) => {
+//         buttonNbr.addEventListener('click', () => {
+//           alert(button.id);
+//         });
+//       buttons.addEventListener('click', () => {
+//           alert('hello');
+//         });
+//     }
+//         //   document.getElementById('numberBtn').getAttribute('value');
+//         // }
+//       )}
 
 // Calculation functions
 const add = function(a, b) {
@@ -116,4 +122,3 @@ const operate = function(a,b, operator) {
 //   }
 //   return result;
 // };
-
