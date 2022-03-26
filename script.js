@@ -11,13 +11,15 @@ const buttons = document.querySelectorAll('.numberBtn');
 const screen = document.getElementById('screen');
 
 buttons.forEach((button) => {
-  if(firstNumber == '') {
-    button.addEventListener('click', () => {
-    let buttonValue = button.textContent;
-    firstNumber += buttonValue;
-    screen.innerHTML = firstNumber;
-  }); 
-}
+    if (firstNumber == '') {
+      button.addEventListener('click', () => {
+      let buttonValue = button.textContent;
+      firstNumber += buttonValue;
+      screen.innerHTML = firstNumber;
+      Number(firstNumber);
+      console.log(typeof firstNumber);
+    });
+  } 
 });
 // PSEUDOCODE
 
