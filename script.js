@@ -1,6 +1,6 @@
 let currentInputA = [];
 let currentInputB = [];
-let firstNumber;
+let firstNumber = '';
 let secondNumber;
 let characterInput;
 let currentOperation = "";
@@ -11,9 +11,13 @@ const buttons = document.querySelectorAll('.numberBtn');
 const screen = document.getElementById('screen');
 
 buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-  alert(button.value);
-  });  
+  if(firstNumber == '') {
+    button.addEventListener('click', () => {
+    let buttonValue = button.textContent;
+    firstNumber += buttonValue;
+    screen.innerHTML = firstNumber;
+  }); 
+}
 });
 // PSEUDOCODE
 
