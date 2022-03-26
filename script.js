@@ -1,9 +1,14 @@
-let currentInputA = [];
-let currentInputB = [];
+let currentInputA= '33';
+let currentInputB = '2';
 let savedInputA;
 let savedInputB;
 let characterInput;
 let currentOperation = "";
+
+const body = document.body;
+window.onload = function() {
+  document.getElementById("screen").innerHTML = currentInputA + currentInputB;
+};
 
 
 // PSEUDOCODE
@@ -34,6 +39,9 @@ let currentOperation = "";
 //
 //
 //    Make the whole operation as a string and set to currentOperation (to be able to save the whole operation string)
+
+
+
 
 
 // Calculation functions
