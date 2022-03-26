@@ -1,46 +1,55 @@
-let currentInputA= '33';
-let currentInputB = '2';
-let savedInputA;
-let savedInputB;
+let currentInputA = [];
+let currentInputB = [];
+let firstNumber;
+let secondNumber;
 let characterInput;
 let currentOperation = "";
 
 const body = document.body;
-window.onload = function() {
-  document.getElementById("screen").innerHTML = currentInputA + currentInputB;
-};
-
+const buttons = document.getElementById('numberBtn')
 
 // PSEUDOCODE
 
 // OR just set currentInputA then if number is clicked, currentInputA += clicked button value.
 
 // Operation function:
-// if -savedInputA == NULL (it means it's the first input value )
+// if -firstNumber == NULL (it means it's the first input value )
 //    If a numberBtn is clicked, push related value to -currentInputA array:
 //    Click 2, push 2 to Array, click 3, push 3 to Array, click 7, push 7 to Array
 //    => currentInputA = [2, 3, 7]
 //
-//    When opeBtn is clicked (- + * /), change array to type integer value '237' as -savedInputA, change -currentInputA = [] 
+//    When opeBtn is clicked (- + * /), change array to type integer value '237' as -firstNumber, change -currentInputA = [] 
 //    and sets -characterInput to "+", "-", ...
 //
 //    If = is clicked, nothing happens [if (currentDigit === "" || prevOperator === "" || prevDigit === "") return;]
 //
 //
 //
-//  if -savedInputA > 0 (it means it's the second input value )
+//  if -firstNumber > 0 (it means it's the second input value )
 //    If a numberBtn is clicked, push related value to -currentInputB array:
 //    Click 4, push 4 to Array, click 6, push 6 to Array, click 1, push 1 to Array
 //    => currentInputB = [4, 6, 1]
 //
-//    When opeBtn ou equal is clicked (= ou - + * /), change array to type integer value '461' as -savedInputB, change -currentInputB = [] 
+//    When opeBtn ou equal is clicked (= ou - + * /), change array to type integer value '461' as -secondNumber, change -currentInputB = [] 
 //    and sets -characterInput to "+", "-", ... ou '' is = is clicked.
 //    Run the related operation function (add, substract...) depending on case, and return VALUE
 //
 //
 //    Make the whole operation as a string and set to currentOperation (to be able to save the whole operation string)
 
+console.log(2);
 
+operation();
+function operation() {
+  // if(firstNumber == undefined) {
+      buttons.forEach((buttonNbr) => {
+        buttonNbr.addEventListener('click', () => {
+          console.log(buttonNbr)
+        });
+        
+      });
+          document.getElementById('numberBtn').getAttribute('value');
+        }
 
 
 
