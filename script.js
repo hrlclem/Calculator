@@ -1,25 +1,37 @@
 let currentInputA = [];
 let currentInputB = [];
-let firstNumber = '';
-let secondNumber;
+let firstInput = '';
+let nextInput;
 let characterInput;
 let currentOperation = "";
 
 const body = document.body;
 const calculator = document.getElementById('calculator');
-const buttons = document.querySelectorAll('.numberBtn');
+const nbrButtons = document.querySelectorAll('.numberBtn');
+const opeButtons = document.querySelectorAll('.opeBtn');
 const screen = document.getElementById('screen');
 
-buttons.forEach((button) => {
-    if (firstNumber == '') {
+nbrButtons.forEach((button) => {
+    if (firstInput == '') {
       button.addEventListener('click', () => {
-      let buttonValue = button.textContent;
-      firstNumber += buttonValue;
-      screen.innerHTML = firstNumber;
-      Number(firstNumber);
-      console.log(typeof firstNumber);
+        let buttonValue = button.textContent;
+        firstInput += buttonValue;
+        firstInput = Number(firstInput);
+        console.log(typeof firstInput);
+        screen.innerHTML = firstInput;
     });
   } 
+});
+
+opeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (characterInput == undefined) { 
+        let buttonValue = button.textContent;
+        screen.innerHTML = firstInput + buttonValue;
+      } else if (characterInput == undefined) {
+        return;
+      };
+  });
 });
 // PSEUDOCODE
 
