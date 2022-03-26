@@ -6,7 +6,8 @@ let characterInput;
 let currentOperation = "";
 
 const body = document.body;
-const buttons = document.getElementById('numberBtn')
+const calculator = document.getElementById('calculator');
+const buttons = document.getElementById('numberBtn');
 
 // PSEUDOCODE
 
@@ -37,19 +38,21 @@ const buttons = document.getElementById('numberBtn')
 //
 //    Make the whole operation as a string and set to currentOperation (to be able to save the whole operation string)
 
-console.log(2);
 
 operation();
+
 function operation() {
+      console.log(2);
   // if(firstNumber == undefined) {
       buttons.forEach((buttonNbr) => {
         buttonNbr.addEventListener('click', () => {
-          console.log(buttonNbr)
+          alert(button.id);
         });
         
       });
-          document.getElementById('numberBtn').getAttribute('value');
-        }
+    }
+        //   document.getElementById('numberBtn').getAttribute('value');
+        // }
 
 
 
