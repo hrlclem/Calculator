@@ -29,6 +29,7 @@ nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
         if (signInput === undefined) 
         {
+          console.log('1')
           let buttonValue = button.textContent;
           operator1 += buttonValue;
           fullInput = operator1;
@@ -37,6 +38,7 @@ nbrButtons.forEach((button) => {
         } 
         else if (signInput != undefined) 
         {
+          console.log('2')
           let buttonValue = button.textContent;
           operator2 += buttonValue;
           currentCalculation = operator2;
@@ -46,6 +48,7 @@ nbrButtons.forEach((button) => {
         } 
         else if (signInput != undefined && firstCalculation != undefined && currentCalculation != undefined) 
         {
+          console.log('3')
           let buttonValue = button.textContent;
           operator2 += buttonValue;
           currentCalculation = operator2;
@@ -59,35 +62,43 @@ nbrButtons.forEach((button) => {
 // Select sign
   opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (signInput == undefined)       // First sign chosen
+      if (signInput === undefined)       // First sign chosen
       { 
-        firstCalculation = operator1;
+        console.log('4')
     let buttonValue = button.textContent;
         signInput = buttonValue;
-        fullInput = operator1 + ' ' + signInput + ' ' ;
+        fullInput = firstCalculation + ' ' + signInput + ' ' ;
         screenResult.innerHTML = fullInput;
       } 
       else if (signInput != undefined)       // Sign chosen again
       {
-            //Calculate 2 first operators
-            operate(firstCalculation, currentCalculation, signInput);
-            firstCalculation = result;
-            // Display result in upper screen
-            // screenOpe.innerHTML = fullInput;
-            // Add sign to the result
-            firstCalculation = result + ' ' + signInput + ' ' ;
-            screenResult.innerHTML = firstCalculation;
-            signInput = undefined;
+        console.log('5')
+        //Calculate 2 first operators
+        operate(firstCalculation, currentCalculation, signInput);
+        firstCalculation = result;
+        // Add sign to the result
+        firstCalculation = result + ' ' + signInput + ' ' ;
+        screenResult.innerHTML = firstCalculation;
+        signInput = undefined;
       } 
+      //TOCHECK
+      // else if (signInput === undefined && firstCalculation != undefined && currentCalculation != undefined) 
+      // {
+      //   console.log('6')
+      //   fullInput = firstCalculation + ' ' + signInput + ' ' ;
+      //   screenResult.innerHTML = fullInput;
+      //   signInput = undefined;
+      // }
       else if (finalResult != undefined) 
       {
-            operator1 = finalResult;
-            firstCalculation = finalResult;
-            currentCalculation = undefined;
-        let buttonValue = button.textContent;
-            signInput = buttonValue;
-            fullInput = fullInput + ' ' + signInput + ' ' ;
-            screenResult.innerHTML = fullInput;
+        console.log('7')
+        operator1 = finalResult;
+        firstCalculation = finalResult;
+        currentCalculation = undefined;
+    let buttonValue = button.textContent;
+        signInput = buttonValue;
+        fullInput = fullInput + ' ' + signInput + ' ' ;
+        screenResult.innerHTML = fullInput;
     };
       
   })
@@ -100,8 +111,10 @@ nbrButtons.forEach((button) => {
 equalBtn.forEach((button) => {
     button.addEventListener('click', () => {
       if (currentCalculation === undefined || signInput === undefined) { 
+          console.log('8')
           return;
       } else if (currentCalculation != undefined) {
+        console.log('9')
         operate(firstCalculation, currentCalculation, signInput);
         finalResult = result;
         firstCalculation = finalResult;
@@ -109,6 +122,7 @@ equalBtn.forEach((button) => {
         screenOpe.innerHTML = fullInput;
         operator1 = '';
         operator2 = '';
+        signInput = undefined;
       };
   })
 });
