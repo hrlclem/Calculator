@@ -1,9 +1,10 @@
 let operator1 = '';           // First operator as string
 let operator2 = '';           // Second operator as string
-let firstInput;               // First part of operation as Number
-let secondInput;
+let firstInputNbr;               // First part of operation as Number
+let secondInputNbr = 3;
 let fullInput = '0';
 let signInput;
+let finalResult;
 let currentOperation = "";    // Displayed operation as string
 
 const body = document.body;
@@ -21,22 +22,19 @@ screenCalculator.innerHTML = fullInput;
 
 // Numbers click
 nbrButtons.forEach((button) => {
-    if (operator1 === '') {
+    if (firstInputNbr === undefined) {
       button.addEventListener('click', () => {
-        console.log('bib1');
         let buttonValue = button.textContent;
         operator1 += buttonValue;
         operator1 = Number(operator1);
         fullInput = operator1;
-        firstInput = operator1;
         screenCalculator.innerHTML = fullInput;
-    });
-  } else if (operator1 > 0){
+    })} else {
       button.addEventListener('click', () => {
         console.log('bib2');
         let buttonValue = button.textContent;
         operator2 += buttonValue;
-        secondInput = Number(operator2);
+        secondInputNbr = Number(operator2);
         fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
         screenCalculator.innerHTML = fullInput;
     })}
@@ -50,34 +48,32 @@ nbrButtons.forEach((button) => {
 opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       if (signInput == undefined) { 
+        firstInputNbr = operator1;
+        console.log(firstInputNbr);
         let buttonValue = button.textContent;
         signInput = buttonValue;
         fullInput = operator1 + ' ' + signInput + ' ' ;
         screenCalculator.innerHTML = fullInput;
       } else if (signInput != undefined) {
-
+        firstInputNbr = operate(firstInputNbr, secondInputNbr, signInput);
       };
   // })} else if {
   //   // HERE
   })});
 
 
-  // Equak click
-// opeButtons.forEach((button) => {
-//   button.addEventListener('click', () => {
-//     if (signInput == undefined) { 
-//       let buttonValue = button.textContent;
-//       signInput = buttonValue;
-//       fullInput = operator1 + signInput;
-//       currentOperation = operator1 + ' ' + signInput;
-//       screenCalculator.innerHTML = fullInput;
-//       console.log(currentOperation);
-//     } else if (signInput != undefined) {
-
-//     };
-// // })} else if {
-// //   // HERE
-// })});
+//Equal click
+  opeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (secondInputNbr === undefined) { 
+          return;
+      } else if (secondInputNbr != undefined) {
+        operate(firstInputNbr, secondInputNbr, signInput);
+        finalResult = result;
+      };
+// })} else if {
+//   // HERE
+})});
 
 
 
