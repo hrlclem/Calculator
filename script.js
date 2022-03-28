@@ -1,7 +1,7 @@
 let operator1 = '';           // First operator as string
 let operator2 = '';           // Second operator as string
 let firstInputNbr;            // First part of operation as Number
-let secondInputNbr = 3;
+let secondInputNbr;
 let fullInput = '0';
 let signInput;
 let finalResult;
@@ -25,12 +25,14 @@ screenOpe.innerHTML = fullInput;
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
           if (firstInputNbr === undefined) {
+            console.log('bob')
           let buttonValue = button.textContent;
               operator1 += buttonValue;
               operator1 = Number(operator1);
               fullInput = operator1;
               screenOpe.innerHTML = fullInput;
     } else if (signInput != undefined) {
+        console.log('bib')
         let buttonValue = button.textContent;
             operator2 += buttonValue;
             secondInputNbr = Number(operator2);
@@ -62,14 +64,12 @@ opeButtons.forEach((button) => {
 //Equal click
   opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (secondInputNbr === undefined) { 
+      if (secondInputNbr === undefined || signInput == '=') { 
           return;
       } else if (secondInputNbr != undefined) {
         operate(firstInputNbr, secondInputNbr, signInput);
         finalResult = result;
       };
-// })} else if {
-//   // HERE
   })
 });
 

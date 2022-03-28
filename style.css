@@ -56,6 +56,12 @@ body {
     border-radius: 4px;
 }
 
+.numberBtn{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
 .screen{
     grid-column-start: 1;
     grid-column-end: 5;
@@ -72,6 +78,7 @@ body {
     text-align: end;
     font-size: 30px;
     padding: 15px;
+    font-weight: bold;
 }
 
 .currentOpeScreen{
