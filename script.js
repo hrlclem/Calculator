@@ -1,8 +1,9 @@
 let operatorA = [];
 let operatorB = [];
 let firstInput = '0';
-let nextInput;
-let characterInput;
+let secondInput = '';
+let fullInput;
+let signInput;
 let currentOperation = "";
 
 const body = document.body;
@@ -11,31 +12,48 @@ const nbrButtons = document.querySelectorAll('.numberBtn');
 const opeButtons = document.querySelectorAll('.opeBtn');
 const screen = document.getElementById('screen');
 
+// Show 0 by default on screen
 screen.innerHTML = firstInput;
 
+// Numbers click
 nbrButtons.forEach((button) => {
-    if (firstInput == '0') {
+    if (firstInput === '0') {
       button.addEventListener('click', () => {
         let buttonValue = button.textContent;
         firstInput += buttonValue;
         firstInput = Number(firstInput);
-        console.log(typeof firstInput);
-        screen.innerHTML = firstInput;
+        fullInput = firstInput;
+        console.log('bob' + fullInput);
+        screen.innerHTML = fullInput;
     });
-  } 
+  } else {
+    button.addEventListener('click', () => {
+      let buttonValue = button.textContent;
+      secondInput += buttonValue;
+      secondInput = Number(secondInput);
+      fullInput = secondInput;
+      console.log('bib' + secondInput);
+      screen.innerHTML = fullInput;
+  })}
 });
+  // } else if {
+  //   // HERE
+  // }
 
 
+// Signs click
 opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (characterInput == undefined) { 
+      if (signInput == undefined) { 
         let buttonValue = button.textContent;
-        screen.innerHTML = firstInput + buttonValue;
-      } else if (characterInput == undefined) {
+        fullInput = firstInput + buttonValue;
+        screen.innerHTML = fullInput;
+      } else if (signInput == "") {
         return;
       };
-  });
-});
+  // })} else if {
+  //   // HERE
+  })});
 
 
 // PSEUDOCODE
