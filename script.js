@@ -24,19 +24,23 @@ const DELBtn = document.getElementById('DEL');
 // Show 0 by default on screen
 screenResult.innerHTML = fullInput;
 
+
 // Numbers click
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
+        // First number chosen
       if (signInput === undefined) {
           let buttonValue = button.textContent;
               operator1 += buttonValue;
-              console.log('oui')
               firstInputNbr = Number(operator1);
               console.log(firstInputNbr)
               fullInput = operator1;
               screenResult.innerHTML = fullInput;
+        // After sign chosen
     } else if (signInput != undefined) {
+      console.log('oui')
         let buttonValue = button.textContent;
+            secondInputNbr += buttonValue;
             operator2 += buttonValue;
             secondInputNbr = Number(operator2);
             fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
@@ -49,22 +53,32 @@ nbrButtons.forEach((button) => {
 // Signs click
 opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (finalResult == undefined) { 
+      // First sign chosen
+      if (signInput == undefined) { 
             firstInputNbr = operator1;
         let buttonValue = button.textContent;
             signInput = buttonValue;
-            fullInput = operator1 + ' ' + signInput + ' ' ;
+            fullInput = firstInputNbr + ' ' + signInput + ' ' ;
             screenResult.innerHTML = fullInput;
-      } else if (firstInputNbr != undefined) {
-            firstInputNbr = operate(firstInputNbr, secondInputNbr, signInput);
-      } else if (finalResult != undefined) {
-            operator1 = finalResult;
-            firstInputNbr = finalResult;
-            secondInputNbr = undefined;
-        let buttonValue = button.textContent;
-            signInput = buttonValue;
-            fullInput = operator1 + ' ' + signInput + ' ' ;
-            screenResult.innerHTML = fullInput;
+      // Sign chosen again
+      } else if (signInput != undefined) {
+            //Calculate 2 first operators
+            operate(firstInputNbr, secondInputNbr, signInput);
+            firstInputNbr = result;
+            // Display result in upper screen
+            screenOpe.innerHTML = fullInput;
+            // Add sign to the result
+            firstInputNbr = result + ' ' + signInput + ' ' ;
+            screenResult.innerHTML = firstInputNbr;
+            signInput = undefined;
+      // } else if (finalResult != undefined) {
+      //       operator1 = finalResult;
+      //       firstInputNbr = finalResult;
+      //       secondInputNbr = undefined;
+      //   let buttonValue = button.textContent;
+      //       signInput = buttonValue;
+      //       fullInput = operator1 + ' ' + signInput + ' ' ;
+      //       screenResult.innerHTML = fullInput;
     };
   })
 });
@@ -78,6 +92,7 @@ equalBtn.forEach((button) => {
       } else if (secondInputNbr != undefined) {
         operate(firstInputNbr, secondInputNbr, signInput);
         finalResult = result;
+        signInput = undefined;
         screenResult.innerHTML = finalResult;
         screenOpe.innerHTML = fullInput;
       };
