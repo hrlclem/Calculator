@@ -14,6 +14,8 @@ const opeButtons = document.querySelectorAll('.opeBtn');
 const equalBtn = document.querySelectorAll('.equal');
 const screenOpe = document.getElementById('screenOpe');
 const screenResult = document.getElementById('screenResult');
+const ACBtn = document.getElementById('AC');
+const DELBtn = document.getElementById('DEL');
 
 
 
@@ -26,14 +28,12 @@ screenResult.innerHTML = fullInput;
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
           if (firstInputNbr === undefined) {
-            console.log('bob')
           let buttonValue = button.textContent;
               operator1 += buttonValue;
               operator1 = Number(operator1);
               fullInput = operator1;
               screenResult.innerHTML = fullInput;
     } else if (signInput != undefined) {
-        console.log('bib')
         let buttonValue = button.textContent;
             operator2 += buttonValue;
             secondInputNbr = Number(operator2);
@@ -56,7 +56,6 @@ opeButtons.forEach((button) => {
       } else if (firstInputNbr != undefined) {
             firstInputNbr = operate(firstInputNbr, secondInputNbr, signInput);
       } else if (finalResult != undefined) {
-            console.log('secondround')
             operator1 = finalResult;
             firstInputNbr = finalResult;
             secondInputNbr = undefined;
@@ -83,7 +82,19 @@ equalBtn.forEach((button) => {
   })
 });
 
-
+// DEL button
+DELBtn.addEventListener('click', () => {
+  fullInput = '0';
+  screenOpe.innerHTML = '';
+  screenResult.innerHTML = fullInput;
+  operator1 = '';
+  operator2 = '';
+  firstInputNbr = undefined;
+  secondInputNbr= undefined;
+  signInput = undefined;
+  finalResult = undefined;
+  currentOperation = "";
+});
 
 
 
