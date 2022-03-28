@@ -1,11 +1,10 @@
-let operator1 = '';           // First operator as string
-let operator2 = '';           // Second operator as string
-let firstNum;              // First part of operation as Number
-let secondNum;
-let fullInput = '0';
-let signInput;
-let finalResult;
-let currentOperation = "";    // Displayed operation as string
+let operator1;                // First operator as string
+let operator2;                // Second operator as string
+let firstCalculation;         // First part of operation as Number (sum of all operator1, operator2...)
+let currentCalculation;       // Currently inputed part (operator2 as number)
+let fullInput = '0';          // String to display calculation
+let signInput;                // Sign used to use calculate()
+let finalResult;              // Result after = sign, is duplicated as firstCalculation in case a new sign is selected
 
 const body = document.body;
 const calculator = document.getElementById('calculator');
@@ -28,31 +27,8 @@ screenResult.innerHTML = fullInput;
 // Numbers click
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        // First number chosen
-      if (signInput === undefined) {
-          let buttonValue = button.textContent;
-              operator1 += buttonValue;
-              if (operator1 === ".") {
-                fullInput = operator1;
-                screenResult.innerHTML = fullInput;
-              } else {
-                firstNum = Number(operator1);
-                fullInput = firstNum;
-                screenResult.innerHTML = fullInput;
-              }
-        // After sign chosen
-    } else if (signInput != undefined) {
-        let buttonValue = button.textContent;
-            operator2 += buttonValue;
-            if (operator2 === ".") {
-              fullInput = firstNum + ' ' + signInput + ' ' + secondNum  + ' ';
-              screenResult.innerHTML = fullInput;
-            } else {
-              secondNum = Number(operator2);
-              fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
-              screenResult.innerHTML = fullInput;
-            }
-    }
+
+
   })
 });
 
