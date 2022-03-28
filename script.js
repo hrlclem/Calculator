@@ -27,7 +27,7 @@ screenResult.innerHTML = fullInput;
 // Numbers click
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
-          if (firstInputNbr === undefined) {
+      if (firstInputNbr === undefined) {
           let buttonValue = button.textContent;
               operator1 += buttonValue;
               operator1 = Number(operator1);
