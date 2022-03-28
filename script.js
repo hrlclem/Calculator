@@ -27,10 +27,12 @@ screenResult.innerHTML = fullInput;
 // Numbers click
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
-      if (firstInputNbr === undefined) {
+      if (signInput === undefined) {
           let buttonValue = button.textContent;
               operator1 += buttonValue;
-              operator1 = Number(operator1);
+              console.log('oui')
+              firstInputNbr = Number(operator1);
+              console.log(firstInputNbr)
               fullInput = operator1;
               screenResult.innerHTML = fullInput;
     } else if (signInput != undefined) {
@@ -47,7 +49,7 @@ nbrButtons.forEach((button) => {
 // Signs click
 opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (firstInputNbr == undefined) { 
+      if (finalResult == undefined) { 
             firstInputNbr = operator1;
         let buttonValue = button.textContent;
             signInput = buttonValue;
@@ -152,7 +154,8 @@ DELBtn.addEventListener('click', () => {
 
 // Calculation functions
 const add = function(a, b) {
-	result = a + b;
+  
+	result = Number(a) + Number(b);
   return result;
 };
 
