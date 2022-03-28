@@ -1,6 +1,6 @@
 let operatorA = [];
 let operatorB = [];
-let firstInput = '';
+let firstInput = '0';
 let nextInput;
 let characterInput;
 let currentOperation = "";
@@ -11,8 +11,10 @@ const nbrButtons = document.querySelectorAll('.numberBtn');
 const opeButtons = document.querySelectorAll('.opeBtn');
 const screen = document.getElementById('screen');
 
+screen.innerHTML = firstInput;
+
 nbrButtons.forEach((button) => {
-    if (firstInput == '') {
+    if (firstInput == '0') {
       button.addEventListener('click', () => {
         let buttonValue = button.textContent;
         firstInput += buttonValue;
