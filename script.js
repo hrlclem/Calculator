@@ -1,5 +1,5 @@
-let currentInputA = [];
-let currentInputB = [];
+let operatorA = [];
+let operatorB = [];
 let firstInput = '';
 let nextInput;
 let characterInput;
@@ -23,6 +23,7 @@ nbrButtons.forEach((button) => {
   } 
 });
 
+
 opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       if (characterInput == undefined) { 
@@ -33,17 +34,19 @@ opeButtons.forEach((button) => {
       };
   });
 });
+
+
 // PSEUDOCODE
 
-// OR just set currentInputA then if number is clicked, currentInputA += clicked button value.
+// OR just set currentInputA then if number is clicked, operatorA += clicked button value.
 
 // Operation function:
 // if -firstNumber == NULL (it means it's the first input value )
-//    If a numberBtn is clicked, push related value to -currentInputA array:
+//    If a numberBtn is clicked, push related value to -operatorA array:
 //    Click 2, push 2 to Array, click 3, push 3 to Array, click 7, push 7 to Array
-//    => currentInputA = [2, 3, 7]
+//    => operatorA = [2, 3, 7]
 //
-//    When opeBtn is clicked (- + * /), change array to type integer value '237' as -firstNumber, change -currentInputA = [] 
+//    When opeBtn is clicked (- + * /), change array to type integer value '237' as -firstNumber, change -operatorA = [] 
 //    and sets -characterInput to "+", "-", ...
 //
 //    If = is clicked, nothing happens [if (currentDigit === "" || prevOperator === "" || prevDigit === "") return;]
@@ -55,7 +58,7 @@ opeButtons.forEach((button) => {
 //    Click 4, push 4 to Array, click 6, push 6 to Array, click 1, push 1 to Array
 //    => currentInputB = [4, 6, 1]
 //
-//    When opeBtn ou equal is clicked (= ou - + * /), change array to type integer value '461' as -secondNumber, change -currentInputB = [] 
+//    When opeBtn ou equal is clicked (= ou - + * /), change array to type integer value '461' as -secondNumber, change -operatorB = [] 
 //    and sets -characterInput to "+", "-", ... ou '' is = is clicked.
 //    Run the related operation function (add, substract...) depending on case, and return VALUE
 //
