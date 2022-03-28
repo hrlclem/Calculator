@@ -36,10 +36,8 @@ nbrButtons.forEach((button) => {
             fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
         screenCalculator.innerHTML = fullInput;
     }
-})});
-  // } else if {
-  //   // HERE
-  // }
+  })
+});
 
 
 // Signs click
@@ -47,7 +45,6 @@ opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       if (signInput == undefined) { 
             firstInputNbr = operator1;
-            console.log(firstInputNbr);
         let buttonValue = button.textContent;
             signInput = buttonValue;
             fullInput = operator1 + ' ' + signInput + ' ' ;
@@ -57,7 +54,8 @@ opeButtons.forEach((button) => {
       };
   // })} else if {
   //   // HERE
-  })});
+  })
+});
 
 
 //Equal click
@@ -71,7 +69,8 @@ opeButtons.forEach((button) => {
       };
 // })} else if {
 //   // HERE
-})});
+  })
+});
 
 
 
