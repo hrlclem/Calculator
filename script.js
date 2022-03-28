@@ -41,8 +41,7 @@ nbrButtons.forEach((button) => {
           console.log('2')
           let buttonValue = button.textContent;
           operator2 += buttonValue;
-          currentCalculation = operator2;
-          fullInput = firstCalculation + ' ' + signInput + ' ' + currentCalculation;
+          fullInput = firstCalculation + ' ' + signInput + ' ' + operator2;
           currentCalculation = Number(operator2);
           screenResult.innerHTML = fullInput;
         } 
@@ -67,8 +66,10 @@ nbrButtons.forEach((button) => {
         console.log('4')
     let buttonValue = button.textContent;
         signInput = buttonValue;
-        fullInput = firstCalculation + ' ' + signInput + ' ' ;
+        fullInput = firstCalculation + ' ' + signInput;
         screenResult.innerHTML = fullInput;
+        operator1 = '';
+        operator2 = '';
       } 
       else if (signInput != undefined)       // Sign chosen again
       {
@@ -77,9 +78,10 @@ nbrButtons.forEach((button) => {
         operate(firstCalculation, currentCalculation, signInput);
         firstCalculation = result;
         // Add sign to the result
-        firstCalculation = result + ' ' + signInput + ' ' ;
-        screenResult.innerHTML = firstCalculation;
-        signInput = undefined;
+        fullInput = firstCalculation + ' ' + signInput;
+        screenResult.innerHTML = fullInput;
+        operator1 = '';
+        operator2 = '';
       } 
       //TOCHECK
       // else if (signInput === undefined && firstCalculation != undefined && currentCalculation != undefined) 
@@ -97,8 +99,10 @@ nbrButtons.forEach((button) => {
         currentCalculation = undefined;
     let buttonValue = button.textContent;
         signInput = buttonValue;
-        fullInput = fullInput + ' ' + signInput + ' ' ;
+        fullInput = firstCalculation + ' ' + signInput;
         screenResult.innerHTML = fullInput;
+        operator1 = '';
+        operator2 = '';
     };
       
   })
