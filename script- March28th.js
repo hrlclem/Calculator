@@ -1,6 +1,6 @@
 let operator1 = '';           // First operator as string
 let operator2 = '';           // Second operator as string
-let firstNum;              // First part of operation as Number
+let firstNum;                 // First part of operation as Number
 let secondNum;
 let fullInput = '0';
 let signInput;
