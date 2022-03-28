@@ -1,7 +1,7 @@
 let operator1 = '';           // First operator as string
 let operator2 = '';           // Second operator as string
-let firstInputNbr;            // First part of operation as Number
-let secondInputNbr;
+let previousNum;            // First part of operation as Number
+let currentNum;
 let fullInput = '0';
 let signInput;
 let finalResult;
@@ -32,18 +32,18 @@ nbrButtons.forEach((button) => {
       if (signInput === undefined) {
           let buttonValue = button.textContent;
               operator1 += buttonValue;
-              firstInputNbr = Number(operator1);
-              console.log(firstInputNbr)
+              previousNum = Number(operator1);
+              console.log(previousNum)
               fullInput = operator1;
               screenResult.innerHTML = fullInput;
         // After sign chosen
     } else if (signInput != undefined) {
       console.log('oui')
         let buttonValue = button.textContent;
-            secondInputNbr += buttonValue;
+            currentNum += buttonValue;
             operator2 += buttonValue;
-            secondInputNbr = Number(operator2);
-            fullInput = firstInputNbr + ' ' + signInput + ' ' + secondInputNbr  + ' ';
+            currentNum = Number(operator2);
+            fullInput = previousNum + ' ' + signInput + ' ' + currentNum  + ' ';
             screenResult.innerHTML = fullInput;
     }
   })
@@ -55,26 +55,26 @@ opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       // First sign chosen
       if (signInput == undefined) { 
-            firstInputNbr = operator1;
+            previousNum = operator1;
         let buttonValue = button.textContent;
             signInput = buttonValue;
-            fullInput = firstInputNbr + ' ' + signInput + ' ' ;
+            fullInput = previousNum + ' ' + signInput + ' ' ;
             screenResult.innerHTML = fullInput;
       // Sign chosen again
       } else if (signInput != undefined) {
             //Calculate 2 first operators
-            operate(firstInputNbr, secondInputNbr, signInput);
-            firstInputNbr = result;
+            operate(previousNum, currentNum, signInput);
+            previousNum = result;
             // Display result in upper screen
             // screenOpe.innerHTML = fullInput;
             // Add sign to the result
-            firstInputNbr = result + ' ' + signInput + ' ' ;
-            screenResult.innerHTML = firstInputNbr;
+            previousNum = result + ' ' + signInput + ' ' ;
+            screenResult.innerHTML = previousNum;
             signInput = undefined;
       } else if (finalResult != undefined) {
             operator1 = finalResult;
-            firstInputNbr = finalResult;
-            secondInputNbr = undefined;
+            previousNum = finalResult;
+            currentNum = undefined;
         let buttonValue = button.textContent;
             signInput = buttonValue;
             fullInput = fullInput + ' ' + signInput + ' ' ;
@@ -87,10 +87,10 @@ opeButtons.forEach((button) => {
 //Equal click
 equalBtn.forEach((button) => {
     button.addEventListener('click', () => {
-      if (secondInputNbr === undefined || signInput == '=') { 
+      if (currentNum === undefined || signInput == '=') { 
           return;
-      } else if (secondInputNbr != undefined) {
-        operate(firstInputNbr, secondInputNbr, signInput);
+      } else if (currentNum != undefined) {
+        operate(previousNum, currentNum, signInput);
         finalResult = result;
         signInput = undefined;
         screenResult.innerHTML = finalResult;
@@ -106,8 +106,8 @@ DELBtn.addEventListener('click', () => {
   screenResult.innerHTML = fullInput;
   operator1 = '';
   operator2 = '';
-  firstInputNbr = undefined;
-  secondInputNbr= undefined;
+  previousNum = undefined;
+  currentNum= undefined;
   signInput = undefined;
   finalResult = undefined;
   currentOperation = "";
