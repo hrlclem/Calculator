@@ -25,17 +25,17 @@ nbrButtons.forEach((button) => {
     if (firstInputNbr === undefined) {
       button.addEventListener('click', () => {
         let buttonValue = button.textContent;
-        operator1 += buttonValue;
-        operator1 = Number(operator1);
-        fullInput = operator1;
+            operator1 += buttonValue;
+            operator1 = Number(operator1);
+            fullInput = operator1;
         screenCalculator.innerHTML = fullInput;
     })} else {
       button.addEventListener('click', () => {
-        console.log('bib2');
         let buttonValue = button.textContent;
-        operator2 += buttonValue;
-        secondInputNbr = Number(operator2);
-        fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
+            console.log('bib2');
+            operator2 += buttonValue;
+            secondInputNbr = Number(operator2);
+            fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
         screenCalculator.innerHTML = fullInput;
     })}
 });
@@ -48,14 +48,14 @@ nbrButtons.forEach((button) => {
 opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       if (signInput == undefined) { 
-        firstInputNbr = operator1;
-        console.log(firstInputNbr);
+            firstInputNbr = operator1;
+            console.log(firstInputNbr);
         let buttonValue = button.textContent;
-        signInput = buttonValue;
-        fullInput = operator1 + ' ' + signInput + ' ' ;
+            signInput = buttonValue;
+            fullInput = operator1 + ' ' + signInput + ' ' ;
         screenCalculator.innerHTML = fullInput;
       } else if (signInput != undefined) {
-        firstInputNbr = operate(firstInputNbr, secondInputNbr, signInput);
+            firstInputNbr = operate(firstInputNbr, secondInputNbr, signInput);
       };
   // })} else if {
   //   // HERE
