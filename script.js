@@ -11,14 +11,15 @@ const body = document.body;
 const calculator = document.getElementById('calculator');
 const nbrButtons = document.querySelectorAll('.numberBtn');
 const opeButtons = document.querySelectorAll('.opeBtn');
-const screenCalculator = document.getElementById('screen');
+const screenOpe = document.getElementById('screenOpe');
+const screenResult = document.getElementById('screenResult');
 
 
 
 
 
 // Show 0 by default on screen
-screenCalculator.innerHTML = fullInput;
+screenOpe.innerHTML = fullInput;
 
 // Numbers click
 nbrButtons.forEach((button) => {
@@ -28,13 +29,13 @@ nbrButtons.forEach((button) => {
               operator1 += buttonValue;
               operator1 = Number(operator1);
               fullInput = operator1;
-          screenCalculator.innerHTML = fullInput;
+              screenOpe.innerHTML = fullInput;
     } else if (signInput != undefined) {
         let buttonValue = button.textContent;
             operator2 += buttonValue;
             secondInputNbr = Number(operator2);
             fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
-        screenCalculator.innerHTML = fullInput;
+            screenOpe.innerHTML = fullInput;
     }
   })
 });
@@ -48,7 +49,7 @@ opeButtons.forEach((button) => {
         let buttonValue = button.textContent;
             signInput = buttonValue;
             fullInput = operator1 + ' ' + signInput + ' ' ;
-        screenCalculator.innerHTML = fullInput;
+            screenOpe.innerHTML = fullInput;
       } else if (signInput != undefined) {
             firstInputNbr = operate(firstInputNbr, secondInputNbr, signInput);
       };
