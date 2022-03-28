@@ -1,6 +1,6 @@
 let operator1 = '';           // First operator as string
 let operator2 = '';           // Second operator as string
-let firstInputNbr;               // First part of operation as Number
+let firstInputNbr;            // First part of operation as Number
 let secondInputNbr = 3;
 let fullInput = '0';
 let signInput;
@@ -22,23 +22,21 @@ screenCalculator.innerHTML = fullInput;
 
 // Numbers click
 nbrButtons.forEach((button) => {
-    if (firstInputNbr === undefined) {
       button.addEventListener('click', () => {
+          if (firstInputNbr === undefined) {
+          let buttonValue = button.textContent;
+              operator1 += buttonValue;
+              operator1 = Number(operator1);
+              fullInput = operator1;
+          screenCalculator.innerHTML = fullInput;
+    } else if (signInput != undefined) {
         let buttonValue = button.textContent;
-            operator1 += buttonValue;
-            operator1 = Number(operator1);
-            fullInput = operator1;
-        screenCalculator.innerHTML = fullInput;
-    })} else {
-      button.addEventListener('click', () => {
-        let buttonValue = button.textContent;
-            console.log('bib2');
             operator2 += buttonValue;
             secondInputNbr = Number(operator2);
             fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
         screenCalculator.innerHTML = fullInput;
-    })}
-});
+    }
+})});
   // } else if {
   //   // HERE
   // }
