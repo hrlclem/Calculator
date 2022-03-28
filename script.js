@@ -43,7 +43,7 @@ nbrButtons.forEach((button) => {
             secondInputNbr += buttonValue;
             operator2 += buttonValue;
             secondInputNbr = Number(operator2);
-            fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
+            fullInput = firstInputNbr + ' ' + signInput + ' ' + secondInputNbr  + ' ';
             screenResult.innerHTML = fullInput;
     }
   })
@@ -66,19 +66,19 @@ opeButtons.forEach((button) => {
             operate(firstInputNbr, secondInputNbr, signInput);
             firstInputNbr = result;
             // Display result in upper screen
-            screenOpe.innerHTML = fullInput;
+            // screenOpe.innerHTML = fullInput;
             // Add sign to the result
             firstInputNbr = result + ' ' + signInput + ' ' ;
             screenResult.innerHTML = firstInputNbr;
             signInput = undefined;
-      // } else if (finalResult != undefined) {
-      //       operator1 = finalResult;
-      //       firstInputNbr = finalResult;
-      //       secondInputNbr = undefined;
-      //   let buttonValue = button.textContent;
-      //       signInput = buttonValue;
-      //       fullInput = operator1 + ' ' + signInput + ' ' ;
-      //       screenResult.innerHTML = fullInput;
+      } else if (finalResult != undefined) {
+            operator1 = finalResult;
+            firstInputNbr = finalResult;
+            secondInputNbr = undefined;
+        let buttonValue = button.textContent;
+            signInput = buttonValue;
+            fullInput = fullInput + ' ' + signInput + ' ' ;
+            screenResult.innerHTML = fullInput;
     };
   })
 });
