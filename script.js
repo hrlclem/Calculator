@@ -1,5 +1,5 @@
-let operator1;                // First operator as string
-let operator2;                // Second operator as string
+let operator1 = '';                // First operator as string
+let operator2 = '';                // Second operator as string
 let firstCalculation;         // First part of operation as Number (sum of all operator1, operator2...)
 let currentCalculation;       // Currently inputed part (operator2 as number)
 let fullInput = '0';          // String to display calculation
@@ -27,57 +27,88 @@ screenResult.innerHTML = fullInput;
 // Numbers click
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
-
-
+        if (signInput === undefined) 
+        {
+          let buttonValue = button.textContent;
+          operator1 += buttonValue;
+          fullInput = operator1;
+          firstCalculation = Number(operator1);
+          screenResult.innerHTML = fullInput;
+        } 
+        else if (signInput != undefined) 
+        {
+          let buttonValue = button.textContent;
+          operator2 += buttonValue;
+          currentCalculation = operator2;
+          fullInput = firstCalculation + ' ' + signInput + ' ' + currentCalculation;
+          currentCalculation = Number(operator2);
+          screenResult.innerHTML = fullInput;
+        } 
+        else if (signInput != undefined && firstCalculation != undefined && currentCalculation != undefined) 
+        {
+          let buttonValue = button.textContent;
+          operator2 += buttonValue;
+          currentCalculation = operator2;
+          fullInput = firstCalculation + ' ' + signInput + ' ' + currentCalculation;
+          currentCalculation = Number(operator2);
+          screenResult.innerHTML = fullInput;
+        }
   })
 });
 
-
-// Signs click
-opeButtons.forEach((button) => {
+// Select sign
+  opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      // First sign chosen
-      if (signInput == undefined) { 
-            firstNum = operator1;
-        let buttonValue = button.textContent;
-            signInput = buttonValue;
-            fullInput = operator1 + ' ' + signInput + ' ' ;
-            screenResult.innerHTML = fullInput;
-      // Sign chosen again
-      } else if (signInput != undefined) {
+      if (signInput == undefined)       // First sign chosen
+      { 
+        firstCalculation = operator1;
+    let buttonValue = button.textContent;
+        signInput = buttonValue;
+        fullInput = operator1 + ' ' + signInput + ' ' ;
+        screenResult.innerHTML = fullInput;
+      } 
+      else if (signInput != undefined)       // Sign chosen again
+      {
             //Calculate 2 first operators
-            operate(firstNum, secondNum, signInput);
-            firstNum = result;
+            operate(firstCalculation, currentCalculation, signInput);
+            firstCalculation = result;
             // Display result in upper screen
             // screenOpe.innerHTML = fullInput;
             // Add sign to the result
-            firstNum = result + ' ' + signInput + ' ' ;
-            screenResult.innerHTML = firstNum;
+            firstCalculation = result + ' ' + signInput + ' ' ;
+            screenResult.innerHTML = firstCalculation;
             signInput = undefined;
-      } else if (finalResult != undefined) {
+      } 
+      else if (finalResult != undefined) 
+      {
             operator1 = finalResult;
-            firstNum = finalResult;
-            secondNum = undefined;
+            firstCalculation = finalResult;
+            currentCalculation = undefined;
         let buttonValue = button.textContent;
             signInput = buttonValue;
             fullInput = fullInput + ' ' + signInput + ' ' ;
             screenResult.innerHTML = fullInput;
     };
+      
   })
 });
+
+
 
 
 //Equal click
 equalBtn.forEach((button) => {
     button.addEventListener('click', () => {
-      if (secondNum === undefined || signInput == '=') { 
+      if (currentCalculation === undefined || signInput === undefined) { 
           return;
-      } else if (secondNum != undefined) {
-        operate(firstNum, secondNum, signInput);
+      } else if (currentCalculation != undefined) {
+        operate(firstCalculation, currentCalculation, signInput);
         finalResult = result;
-        signInput = undefined;
+        firstCalculation = finalResult;
         screenResult.innerHTML = finalResult;
         screenOpe.innerHTML = fullInput;
+        operator1 = '';
+        operator2 = '';
       };
   })
 });
