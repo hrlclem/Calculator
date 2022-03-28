@@ -1,40 +1,45 @@
-let operatorA = [];
-let operatorB = [];
-let firstInput = '0';
-let secondInput = '';
-let fullInput;
+let operator1 = '';           // First operator as string
+let operator2 = '';           // Second operator as string
+let firstInput;               // First part of operation as Number
+let secondInput;
+let fullInput = '0';
 let signInput;
-let currentOperation = "";
+let currentOperation = "";    // Displayed operation as string
 
 const body = document.body;
 const calculator = document.getElementById('calculator');
 const nbrButtons = document.querySelectorAll('.numberBtn');
 const opeButtons = document.querySelectorAll('.opeBtn');
-const screen = document.getElementById('screen');
+const screenCalculator = document.getElementById('screen');
+
+
+
+
 
 // Show 0 by default on screen
-screen.innerHTML = firstInput;
+screenCalculator.innerHTML = fullInput;
 
 // Numbers click
 nbrButtons.forEach((button) => {
-    if (firstInput === '0') {
+    if (operator1 === '') {
       button.addEventListener('click', () => {
+        console.log('bib1');
         let buttonValue = button.textContent;
-        firstInput += buttonValue;
-        firstInput = Number(firstInput);
-        fullInput = firstInput;
-        console.log('bob' + fullInput);
-        screen.innerHTML = fullInput;
+        operator1 += buttonValue;
+        operator1 = Number(operator1);
+        fullInput = operator1;
+        firstInput = operator1;
+        screenCalculator.innerHTML = fullInput;
     });
-  } else {
-    button.addEventListener('click', () => {
-      let buttonValue = button.textContent;
-      secondInput += buttonValue;
-      secondInput = Number(secondInput);
-      fullInput = secondInput;
-      console.log('bib' + secondInput);
-      screen.innerHTML = fullInput;
-  })}
+  } else if (operator1 > 0){
+      button.addEventListener('click', () => {
+        console.log('bib2');
+        let buttonValue = button.textContent;
+        operator2 += buttonValue;
+        secondInput = Number(operator2);
+        fullInput = operator1 + ' ' + signInput + ' ' + operator2  + ' ';
+        screenCalculator.innerHTML = fullInput;
+    })}
 });
   // } else if {
   //   // HERE
@@ -46,14 +51,41 @@ opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
       if (signInput == undefined) { 
         let buttonValue = button.textContent;
-        fullInput = firstInput + buttonValue;
-        screen.innerHTML = fullInput;
-      } else if (signInput == "") {
-        return;
+        signInput = buttonValue;
+        fullInput = operator1 + ' ' + signInput + ' ' ;
+        screenCalculator.innerHTML = fullInput;
+      } else if (signInput != undefined) {
+
       };
   // })} else if {
   //   // HERE
   })});
+
+
+  // Equak click
+// opeButtons.forEach((button) => {
+//   button.addEventListener('click', () => {
+//     if (signInput == undefined) { 
+//       let buttonValue = button.textContent;
+//       signInput = buttonValue;
+//       fullInput = operator1 + signInput;
+//       currentOperation = operator1 + ' ' + signInput;
+//       screenCalculator.innerHTML = fullInput;
+//       console.log(currentOperation);
+//     } else if (signInput != undefined) {
+
+//     };
+// // })} else if {
+// //   // HERE
+// })});
+
+
+
+
+
+
+
+
 
 
 // PSEUDOCODE
