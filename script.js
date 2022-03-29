@@ -58,7 +58,6 @@ nbrButtons.forEach((button) => {
   })
 });
 
-
 // Select sign
   opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
