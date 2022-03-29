@@ -34,7 +34,6 @@ nbrButtons.forEach((button) => {
         } else {
           if (signInput === undefined) 
           {
-            console.log('1')
             operator1 += buttonValue;
             fullInput = operator1;
             firstCalculation = Math.round(Number(operator1));
@@ -42,7 +41,6 @@ nbrButtons.forEach((button) => {
           } 
           else if (signInput != undefined) 
           {
-            console.log('2')
             operator2 += buttonValue;
             fullInput = firstCalculation + ' ' + signInput + ' ' + operator2;
             currentCalculation = Math.round(Number(operator2));
@@ -50,7 +48,6 @@ nbrButtons.forEach((button) => {
           } 
           else if (signInput != undefined && firstCalculation != undefined && currentCalculation != undefined) 
           {
-            console.log('3')
             operator2 += buttonValue;
             currentCalculation = operator2;
             fullInput = firstCalculation + ' ' + signInput + ' ' + currentCalculation;
@@ -64,9 +61,13 @@ nbrButtons.forEach((button) => {
 // Select sign
   opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (signInput === undefined && fullInput != '0')           // First sign chosen
+      if (fullInput.includes ("/ 0") == true) {
+        window.alert("You cannot divide by 0, please try again!");
+        deleteAll();
+        return;
+      } else {
+        if (signInput === undefined && fullInput != '0')           // First sign chosen
       { 
-        console.log('4')
         let buttonValue = button.textContent;
         signInput = buttonValue;
         fullInput = firstCalculation + ' ' + signInput;
@@ -77,7 +78,6 @@ nbrButtons.forEach((button) => {
       } 
       else if (signInput != undefined)       // Sign chosen again
       {
-        console.log('5')
         let buttonValue = button.textContent;
         operate(firstCalculation, currentCalculation, signInput);
         signInput = buttonValue;
@@ -90,7 +90,6 @@ nbrButtons.forEach((button) => {
       } 
       else if (finalResult != undefined) 
       {
-        console.log('7')
         operator1 = finalResult;
         firstCalculation = finalResult;
         currentCalculation = undefined;
@@ -106,6 +105,7 @@ nbrButtons.forEach((button) => {
     {
         return;
     };
+  }   
   })
 });
 
@@ -113,38 +113,32 @@ nbrButtons.forEach((button) => {
 //Equal click
 equalBtn.forEach((button) => {
     button.addEventListener('click', () => {
-      if (currentCalculation === undefined || signInput === undefined) { 
-          console.log('8')
-          return;
-      } else if (currentCalculation != undefined) {
-        console.log('9')
-        operate(firstCalculation, currentCalculation, signInput);
-        finalResult = result;
-        firstCalculation = finalResult;
-        screenResult.innerHTML = finalResult;
-        screenOpe.innerHTML = fullInput;
-        operator1 = '';
-        operator2 = '';
-        signInput = undefined;
-        dot = undefined;
-      };
+      if (fullInput.includes ("/ 0") == true) {
+        window.alert("You cannot divide by 0, please try again!");
+        deleteAll();
+        return;
+      } else {
+        if (currentCalculation === undefined || signInput === undefined) { 
+            return;
+        } else if (currentCalculation != undefined) {
+          operate(firstCalculation, currentCalculation, signInput);
+          finalResult = result;
+          firstCalculation = finalResult;
+          screenResult.innerHTML = finalResult;
+          screenOpe.innerHTML = fullInput;
+          operator1 = '';
+          operator2 = '';
+          signInput = undefined;
+          dot = undefined;
+        };
+      }
   })
 });
 
 
 // DEL button
 DELBtn.addEventListener('click', () => {
-  fullInput = '0';
-  screenOpe.innerHTML = '';
-  screenResult.innerHTML = fullInput;
-  operator1 = '';
-  operator2 = '';
-  firstNum = undefined;
-  secondNum= undefined;
-  signInput = undefined;
-  finalResult = undefined;
-  currentOperation = "";
-  dot = undefined;
+  deleteAll();
 });
 
 // AC button
@@ -181,6 +175,19 @@ ACBtn.addEventListener('click', () => {
       }
 });
 
+const deleteAll = function() {
+  fullInput = '0';
+  screenOpe.innerHTML = '';
+  screenResult.innerHTML = fullInput;
+  operator1 = '';
+  operator2 = '';
+  firstNum = undefined;
+  secondNum= undefined;
+  signInput = undefined;
+  finalResult = undefined;
+  currentOperation = "";
+  dot = undefined;
+};
 
 
 // Each sign functions
