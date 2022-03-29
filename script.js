@@ -61,10 +61,10 @@ nbrButtons.forEach((button) => {
 // Select sign
   opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (signInput === undefined)       // First sign chosen
+      if (signInput === undefined)           // First sign chosen
       { 
         console.log('4')
-    let buttonValue = button.textContent;
+        let buttonValue = button.textContent;
         signInput = buttonValue;
         fullInput = firstCalculation + ' ' + signInput;
         screenResult.innerHTML = fullInput;
@@ -74,7 +74,8 @@ nbrButtons.forEach((button) => {
       else if (signInput != undefined)       // Sign chosen again
       {
         console.log('5')
-        //Calculate 2 first operators
+        let buttonValue = button.textContent;
+        signInput = buttonValue;
         operate(firstCalculation, currentCalculation, signInput);
         firstCalculation = result;
         // Add sign to the result
@@ -83,21 +84,13 @@ nbrButtons.forEach((button) => {
         operator1 = '';
         operator2 = '';
       } 
-      //TOCHECK
-      // else if (signInput === undefined && firstCalculation != undefined && currentCalculation != undefined) 
-      // {
-      //   console.log('6')
-      //   fullInput = firstCalculation + ' ' + signInput + ' ' ;
-      //   screenResult.innerHTML = fullInput;
-      //   signInput = undefined;
-      // }
       else if (finalResult != undefined) 
       {
         console.log('7')
         operator1 = finalResult;
         firstCalculation = finalResult;
         currentCalculation = undefined;
-    let buttonValue = button.textContent;
+        let buttonValue = button.textContent;
         signInput = buttonValue;
         fullInput = firstCalculation + ' ' + signInput;
         screenResult.innerHTML = fullInput;
@@ -107,8 +100,6 @@ nbrButtons.forEach((button) => {
       
   })
 });
-
-
 
 
 //Equal click
@@ -146,61 +137,45 @@ DELBtn.addEventListener('click', () => {
   currentOperation = "";
 });
 
+// AC button
+ACBtn.addEventListener('click', () => {
+  if(fullInput.charAt(fullInput.length - 1) == '+' || 
+      fullInput.charAt(fullInput.length - 1) == '-' || 
+      fullInput.charAt(fullInput.length - 1) == '*' || 
+      fullInput.charAt(fullInput.length - 1) == '/' ) {
+        fullInput = fullInput.slice(0, -1);
+        screenResult.innerHTML = fullInput;
+        signInput = undefined;
+      } else {
+          if (signInput === undefined) 
+          {
+            fullInput = operator1.slice(0, -1);
+            firstCalculation = Number(operator1.slice(0, -1));
+            screenResult.innerHTML = fullInput;
+          } 
+          else if (signInput != undefined) 
+          {
+            operator2 = operator2.slice(0, -1);
+            fullInput = firstCalculation + ' ' + signInput + ' ' + operator2;
+            currentCalculation = Number(operator2);
+            screenResult.innerHTML = fullInput;
+          } 
+          else if (signInput != undefined && firstCalculation != undefined && currentCalculation != undefined) 
+          {
+            operator2 = operator2.slice(0, -1);
+            currentCalculation = operator2;
+            fullInput = firstCalculation + ' ' + signInput + ' ' + currentCalculation;
+            currentCalculation = Number(operator2);
+            screenResult.innerHTML = fullInput;
+          }
+      }
+    });
 
 
 
 
 
-
-
-// PSEUDOCODE
-
-// OR just set currentInputA then if number is clicked, operatorA += clicked button value.
-
-// Operation function:
-// if -firstNumber == NULL (it means it's the first input value )
-//    If a numberBtn is clicked, push related value to -operatorA array:
-//    Click 2, push 2 to Array, click 3, push 3 to Array, click 7, push 7 to Array
-//    => operatorA = [2, 3, 7]
-//
-//    When opeBtn is clicked (- + * /), change array to type integer value '237' as -firstNumber, change -operatorA = [] 
-//    and sets -characterInput to "+", "-", ...
-//
-//    If = is clicked, nothing happens [if (currentDigit === "" || prevOperator === "" || prevDigit === "") return;]
-//
-//
-//
-//  if -firstNumber > 0 (it means it's the second input value )
-//    If a numberBtn is clicked, push related value to -currentInputB array:
-//    Click 4, push 4 to Array, click 6, push 6 to Array, click 1, push 1 to Array
-//    => currentInputB = [4, 6, 1]
-//
-//    When opeBtn ou equal is clicked (= ou - + * /), change array to type integer value '461' as -secondNumber, change -operatorB = [] 
-//    and sets -characterInput to "+", "-", ... ou '' is = is clicked.
-//    Run the related operation function (add, substract...) depending on case, and return VALUE
-//
-//
-//    Make the whole operation as a string and set to currentOperation (to be able to save the whole operation string)
-
-
-//peration();
-
-// function operation() {
-//       console.log(2);
-//   // if(firstNumber == undefined) {
-//       buttons.forEach((buttonNbr) => {
-//         buttonNbr.addEventListener('click', () => {
-//           alert(button.id);
-//         });
-//       buttons.addEventListener('click', () => {
-//           alert('hello');
-//         });
-//     }
-//         //   document.getElementById('numberBtn').getAttribute('value');
-//         // }
-//       )}
-
-// Calculation functions
+// Each sign functions
 const add = function(a, b) {
   
 	result = Number(a) + Number(b);
@@ -223,8 +198,8 @@ const divide = function(a, b) {
 };
 
 
+// Calculation function
 const operate = function(a,b, operator) {
-
     if (operator == "+") {
         add(a,b);
         return add;
@@ -239,25 +214,3 @@ const operate = function(a,b, operator) {
         return divide;
     };
 };
-
-
-
-// const multiplyArray = function(array) {
-//     let result = 1;
-//       for (let i = 0; i < array.length; i++) {
-//       result *= array[i];
-//     }
-//     return result;
-//   };
-
-
-
-  
-
-// const sum = function(array) {
-//   let result = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     result += array[i] 
-//   }
-//   return result;
-// };
