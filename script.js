@@ -1,10 +1,10 @@
 let operator1 = '';                // First operator as string
 let operator2 = '';                // Second operator as string
-let firstCalculation;         // First part of operation as Number (sum of all operator1, operator2...)
-let currentCalculation;       // Currently inputed part (operator2 as number)
-let fullInput = '0';          // String to display calculation
-let signInput;                // Sign used to use calculate()
-let finalResult;              // Result after = sign, is duplicated as firstCalculation in case a new sign is selected
+let firstCalculation;              // First part of operation as Number (sum of all operator1, operator2...)
+let currentCalculation;            // Currently inputed part (operator2 as number)
+let fullInput = '0';               // String to display calculation
+let signInput;                     // Sign used to use calculate()
+let finalResult;                   // Result after = sign, is duplicated as firstCalculation in case a new sign is selected
 
 const body = document.body;
 const calculator = document.getElementById('calculator');
@@ -139,7 +139,7 @@ DELBtn.addEventListener('click', () => {
 
 // AC button
 ACBtn.addEventListener('click', () => {
-  if(fullInput.charAt(fullInput.length - 1) == '+' || 
+  if( fullInput.charAt(fullInput.length - 1) == '+' || 
       fullInput.charAt(fullInput.length - 1) == '-' || 
       fullInput.charAt(fullInput.length - 1) == '*' || 
       fullInput.charAt(fullInput.length - 1) == '/' ) {
