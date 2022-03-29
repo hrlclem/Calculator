@@ -61,7 +61,7 @@ nbrButtons.forEach((button) => {
 // Select sign
   opeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (signInput === undefined)           // First sign chosen
+      if (signInput === undefined && fullInput != '0')           // First sign chosen
       { 
         console.log('4')
         let buttonValue = button.textContent;
@@ -96,8 +96,11 @@ nbrButtons.forEach((button) => {
         screenResult.innerHTML = fullInput;
         operator1 = '';
         operator2 = '';
+    }
+    else if (signInput === undefined && fullInput == '0' && operator1 == '') 
+    {
+        return;
     };
-      
   })
 });
 
