@@ -75,10 +75,9 @@ nbrButtons.forEach((button) => {
       {
         console.log('5')
         let buttonValue = button.textContent;
-        signInput = buttonValue;
         operate(firstCalculation, currentCalculation, signInput);
+        signInput = buttonValue;
         firstCalculation = result;
-        // Add sign to the result
         fullInput = firstCalculation + ' ' + signInput;
         screenResult.innerHTML = fullInput;
         operator1 = '';
