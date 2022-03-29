@@ -5,6 +5,7 @@ let currentCalculation;            // Currently inputed part (operator2 as numbe
 let fullInput = '0';               // String to display calculation
 let signInput;                     // Sign used to use calculate()
 let finalResult;                   // Result after = sign, is duplicated as firstCalculation in case a new sign is selected
+let dot;
 
 const body = document.body;
 const calculator = document.getElementById('calculator');
@@ -27,35 +28,37 @@ screenResult.innerHTML = fullInput;
 // Numbers click
 nbrButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        if (signInput === undefined) 
-        {
-          console.log('1')
-          let buttonValue = button.textContent;
-          operator1 += buttonValue;
-          fullInput = operator1;
-          firstCalculation = Number(operator1);
-          screenResult.innerHTML = fullInput;
-        } 
-        else if (signInput != undefined) 
-        {
-          console.log('2')
-          let buttonValue = button.textContent;
-          operator2 += buttonValue;
-          fullInput = firstCalculation + ' ' + signInput + ' ' + operator2;
-          currentCalculation = Number(operator2);
-          screenResult.innerHTML = fullInput;
-        } 
-        else if (signInput != undefined && firstCalculation != undefined && currentCalculation != undefined) 
-        {
-          console.log('3')
-          let buttonValue = button.textContent;
-          operator2 += buttonValue;
-          currentCalculation = operator2;
-          fullInput = firstCalculation + ' ' + signInput + ' ' + currentCalculation;
-          currentCalculation = Number(operator2);
-          screenResult.innerHTML = fullInput;
+        let buttonValue = button.textContent;
+        if (buttonValue == '.' && operator1.includes (".") == true || buttonValue == '.' && operator2.includes (".") == true) {
+          return;
+        } else {
+          if (signInput === undefined) 
+          {
+            console.log('1')
+            operator1 += buttonValue;
+            fullInput = operator1;
+            firstCalculation = Math.round(Number(operator1));
+            screenResult.innerHTML = fullInput;
+          } 
+          else if (signInput != undefined) 
+          {
+            console.log('2')
+            operator2 += buttonValue;
+            fullInput = firstCalculation + ' ' + signInput + ' ' + operator2;
+            currentCalculation = Math.round(Number(operator2));
+            screenResult.innerHTML = fullInput;
+          } 
+          else if (signInput != undefined && firstCalculation != undefined && currentCalculation != undefined) 
+          {
+            console.log('3')
+            operator2 += buttonValue;
+            currentCalculation = operator2;
+            fullInput = firstCalculation + ' ' + signInput + ' ' + currentCalculation;
+            currentCalculation = Math.round(Number(operator2));
+            screenResult.innerHTML = fullInput;
+          }
         }
-  })
+    })
 });
 
 // Select sign
@@ -70,6 +73,7 @@ nbrButtons.forEach((button) => {
         screenResult.innerHTML = fullInput;
         operator1 = '';
         operator2 = '';
+        dot = undefined;
       } 
       else if (signInput != undefined)       // Sign chosen again
       {
@@ -82,6 +86,7 @@ nbrButtons.forEach((button) => {
         screenResult.innerHTML = fullInput;
         operator1 = '';
         operator2 = '';
+        dot = undefined;
       } 
       else if (finalResult != undefined) 
       {
@@ -95,6 +100,7 @@ nbrButtons.forEach((button) => {
         screenResult.innerHTML = fullInput;
         operator1 = '';
         operator2 = '';
+        dot = undefined;
     }
     else if (signInput === undefined && fullInput == '0' && operator1 == '') 
     {
@@ -120,6 +126,7 @@ equalBtn.forEach((button) => {
         operator1 = '';
         operator2 = '';
         signInput = undefined;
+        dot = undefined;
       };
   })
 });
@@ -137,6 +144,7 @@ DELBtn.addEventListener('click', () => {
   signInput = undefined;
   finalResult = undefined;
   currentOperation = "";
+  dot = undefined;
 });
 
 // AC button
@@ -171,9 +179,7 @@ ACBtn.addEventListener('click', () => {
             screenResult.innerHTML = fullInput;
           }
       }
-    });
-
-
+});
 
 
 
